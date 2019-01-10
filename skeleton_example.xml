@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<bone name="root" length="0.25"
+    xmlns="https://www.w3schools.com"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="file:///home/austin-z/NetBeansProjects/ETServer skeleton_schema.xsd">
+    
+    <bone name="another" length="1" />
+    
+</bone>
+    

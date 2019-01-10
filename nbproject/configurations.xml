@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="f2" displayName="Driver" projectFiles="true">
+        <itemPath>/home/austin-z/NetBeansProjects/ETServer/driver_io.h</itemPath>
+        <itemPath>/home/austin-z/NetBeansProjects/ETServer/posix_driver_io.h</itemPath>
+        <itemPath>/home/austin-z/NetBeansProjects/ETServer/proto.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="IO" projectFiles="true">
+        <itemPath>/home/austin-z/NetBeansProjects/ETServer/app_io.h</itemPath>
+        <itemPath>/home/austin-z/NetBeansProjects/ETServer/posix_app_io.h</itemPath>
+        <itemPath>/home/austin-z/NetBeansProjects/ETServer/win_app_io.h</itemPath>
+      </logicalFolder>
+      <itemPath>/home/austin-z/NetBeansProjects/ETServer/data.h</itemPath>
+      <itemPath>/home/austin-z/NetBeansProjects/ETServer/vector.h</itemPath>
+      <itemPath>/home/austin-z/NetBeansProjects/ETServer/xml_parse.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>EntryPoint.c</itemPath>
+      <itemPath>/home/austin-z/NetBeansProjects/ETServer/data.c</itemPath>
+      <itemPath>/home/austin-z/NetBeansProjects/ETServer/linux_app_io.c</itemPath>
+      <itemPath>/home/austin-z/NetBeansProjects/ETServer/posix_driver_io.c</itemPath>
+      <itemPath>/home/austin-z/NetBeansProjects/ETServer/xml_parse.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <itemPath>/home/austin-z/NetBeansProjects/ETServer/skeleton_example.xml</itemPath>
+    <itemPath>/home/austin-z/NetBeansProjects/ETServer/skeleton_schema.xsd</itemPath>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <standard>3</standard>
+          <incDir>
+            <pElem>/usr/include/libxml2</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>DEBUG</Elem>
+          </preprocessorList>
+        </cTool>
+        <linkerTool>
+          <commandLine>-lxml2</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/app_io.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/data.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/data.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/driver_io.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/linux_app_io.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/posix_app_io.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/posix_driver_io.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/posix_driver_io.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/proto.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/skeleton_example.xml"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/skeleton_schema.xsd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/vector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/win_app_io.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/xml_parse.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/xml_parse.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="EntryPoint.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/app_io.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/data.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/data.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/driver_io.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/linux_app_io.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/posix_app_io.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/posix_driver_io.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/posix_driver_io.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/proto.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/skeleton_example.xml"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/skeleton_schema.xsd"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/vector.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/win_app_io.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/xml_parse.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="/home/austin-z/NetBeansProjects/ETServer/xml_parse.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="EntryPoint.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

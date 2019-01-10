@@ -1,0 +1,45 @@
+<?xml version="1.1"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="https://www.w3schools.com"
+    xmlns="https://www.w3schools.com"
+    elementFormDefault="qualified">
+    
+    <xs:complexType name="rotation_axis_type">
+                    <xs:attribute name="min" type="xs:integer" use="optional" />
+                    <xs:attribute name="max" type="xs:integer" use="optional" />
+                    <xs:attribute name="allowed" type="xs:boolean" use="optional" />
+    </xs:complexType>
+    
+    <xs:complexType name="rotation_type>
+        <xs:sequence>
+                            
+            <!--Roll Axis-->
+            <xs:element name="X" minOccurs="0" maxOccurs="1" type="rotation_axis_type" />
+                            
+            <!--Up/Down-->
+            <xs:element name="Y" minOccurs="0" maxOccurs="1" type="rotation_axis_type" />
+                            
+            <!--Left/Right-->
+            <xs:element name="Z" minOccurs="0" maxOccurs="1" type="rotation_axis_type" />
+                            
+        </xs:sequence>
+    </xs:complexType>
+                
+    <xs:element name="bone">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="rotation" type="rotation_type" minOccurs="0" maxOccurs="1" />
+                
+                <xs:element ref="bone" minOccurs="0" maxOccurs="unbounded" />
+                            
+            </xs:sequence>
+            
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="length" type="xs:double" use="required" />
+            
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>
