@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux
-CND_DLIB_EXT=so
+CND_PLATFORM=MinGW-Windows
+CND_DLIB_EXT=dll
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,11 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/4b0a011a/data.o \
-	${OBJECTDIR}/_ext/4b0a011a/linux_app_io.o \
-	${OBJECTDIR}/_ext/4b0a011a/posix_driver_io.o \
-	${OBJECTDIR}/_ext/4b0a011a/xml_parse.o \
-	${OBJECTDIR}/EntryPoint.o
+	${OBJECTDIR}/src/App/linux_app_io.o \
+	${OBJECTDIR}/src/Driver/posix_driver_io.o \
+	${OBJECTDIR}/src/EntryPoint.o \
+	${OBJECTDIR}/src/data.o \
+	${OBJECTDIR}/src/xml_parse.o
 
 
 # C Compiler Flags
@@ -60,36 +60,36 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/etserver
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/etserver.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/etserver: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/etserver.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/etserver ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/4b0a011a/data.o: /home/austin-z/NetBeansProjects/ETServer/data.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/4b0a011a
+${OBJECTDIR}/src/App/linux_app_io.o: src/App/linux_app_io.c
+	${MKDIR} -p ${OBJECTDIR}/src/App
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/4b0a011a/data.o /home/austin-z/NetBeansProjects/ETServer/data.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/App/linux_app_io.o src/App/linux_app_io.c
 
-${OBJECTDIR}/_ext/4b0a011a/linux_app_io.o: /home/austin-z/NetBeansProjects/ETServer/linux_app_io.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/4b0a011a
+${OBJECTDIR}/src/Driver/posix_driver_io.o: src/Driver/posix_driver_io.c
+	${MKDIR} -p ${OBJECTDIR}/src/Driver
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/4b0a011a/linux_app_io.o /home/austin-z/NetBeansProjects/ETServer/linux_app_io.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Driver/posix_driver_io.o src/Driver/posix_driver_io.c
 
-${OBJECTDIR}/_ext/4b0a011a/posix_driver_io.o: /home/austin-z/NetBeansProjects/ETServer/posix_driver_io.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/4b0a011a
+${OBJECTDIR}/src/EntryPoint.o: src/EntryPoint.c
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/4b0a011a/posix_driver_io.o /home/austin-z/NetBeansProjects/ETServer/posix_driver_io.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/EntryPoint.o src/EntryPoint.c
 
-${OBJECTDIR}/_ext/4b0a011a/xml_parse.o: /home/austin-z/NetBeansProjects/ETServer/xml_parse.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/4b0a011a
+${OBJECTDIR}/src/data.o: src/data.c
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/4b0a011a/xml_parse.o /home/austin-z/NetBeansProjects/ETServer/xml_parse.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/data.o src/data.c
 
-${OBJECTDIR}/EntryPoint.o: EntryPoint.c
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/src/xml_parse.o: src/xml_parse.c
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EntryPoint.o EntryPoint.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/xml_parse.o src/xml_parse.c
 
 # Subprojects
 .build-subprojects:
