@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/App/linux_app_io.o \
+	${OBJECTDIR}/src/App/posix_app_io.o \
 	${OBJECTDIR}/src/Driver/posix_driver_io.o \
 	${OBJECTDIR}/src/EntryPoint.o \
 	${OBJECTDIR}/src/data.o \
@@ -66,10 +66,10 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/etserver.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/etserver ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/src/App/linux_app_io.o: src/App/linux_app_io.c
+${OBJECTDIR}/src/App/posix_app_io.o: src/App/posix_app_io.c
 	${MKDIR} -p ${OBJECTDIR}/src/App
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/App/linux_app_io.o src/App/linux_app_io.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/App/posix_app_io.o src/App/posix_app_io.c
 
 ${OBJECTDIR}/src/Driver/posix_driver_io.o: src/Driver/posix_driver_io.c
 	${MKDIR} -p ${OBJECTDIR}/src/Driver
