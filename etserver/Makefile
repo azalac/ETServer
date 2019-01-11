@@ -1,26 +1,36 @@
 
 COMMON=$(realpath ../common)
 
-CC=cc
+CC=gcc
 
-PROJ=common
+PROJ=etserver
 SRC=src
 INC=inc
 OBJ=obj
 BIN=bin
 
-SRCS=$(shell find $(SRC) -name "*.c" -exec basename {} \;)
-OBJS=$(addprefix $(OBJ)/, $(addsuffix .obj, $(basename $(SRCS))))
+EXTENSIONS := c s
+
 DIRS=$(sort $(SRC) $(INC) $(OBJ) $(BIN))
 
-CFLAGS = -Wall -g $(addprefix -I ,$(INC)) -fPIC
+SRCS=$(shell find $(SRC) -name "*.[$(EXTENSIONS)]")
+
+OBJ_EXT=o
+
+OBJS=$(patsubst $(SRC)/%,$(OBJ)/%,$(SRCS))
+
+$(eval $(foreach ext,$(EXTENSIONS),OBJS=$(patsubst %.$(ext),%.$(OBJ_EXT),$(OBJS))))
+
+CFLAGS = -Wall -g $(addprefix -I ,$(INC))
 LDFLAGS = $(CFLAGS) -std=c99 -Os
 LIBS = 
 
-#don't add common lib if project is common
+#don't add common lib if project is common, or if common doesn't exist
+ifneq (,$(wildcard $(COMMON)))
 ifneq '$(PROJ)' 'common'
-CFLAGS += -I $(COMMON)/$(INC)
-LIBS += -L$(COMMON)/$(BIN) -lcommon 
+CFLAGS += -I $(COMMON)/inc
+LIBS += -L$(COMMON)/bin -lcommon  -lpthread
+endif
 endif
 
 .PHONY: all clean
@@ -30,17 +40,16 @@ all: $(DIRS) $(PROJ)
 clean:
 	find ./$(OBJ) -iname "*.obj" | xargs -r rm
 	find ./ -iname "*~" | xargs -r rm
-	rm -f $(BIN)/lib$(PROJ).a
+	rm -f $(BIN)/$(PROJ)
 
 $(DIRS):
 	mkdir -p $@
 
 $(PROJ): $(OBJS)
-#	$(CC) $(LDFLAGS) $(OBJS) -o $(BIN)/$(PROJ) $(LIBS)
-#generates a static library from the object files
-	ar rcs $(BIN)/lib$(PROJ).a $(OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) -o $(BIN)/$(PROJ) $(LIBS)
   
-$(OBJ)/%.obj: $(SRC)/%.c
+$(OBJ)/%.o: $(SRC)/%.c
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 #Params:
