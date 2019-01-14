@@ -34,7 +34,8 @@ CLR/%: %
 #Params:
 #	regex:	The regex to find
 find:
-	@$(foreach file, $(shell find . -type f), grep -E -H -n "$(regex)" $(file); true;)
+	find . -type f ! -path "*/\.*" ! -path "./libbuild/libxml2/*" -print -exec grep -E -H -n "$(regex)" {} \;
+#	@$(foreach file, $(shell find . -type f), grep -E -H -n "$(regex)" $(file); true;)
 
 zip: clean
 	cd .. ; tar -cvf $(cdir).tar $(cdir)/*

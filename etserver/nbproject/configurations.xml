@@ -22,14 +22,13 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
-      <itemPath>skeleton_example.xml</itemPath>
-      <itemPath>skeleton_schema.xsd</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="App" displayName="App" projectFiles="true">
         <itemPath>src/App/posix_app_io.c</itemPath>
+        <itemPath>src/App/win_app_io.c</itemPath>
       </logicalFolder>
       <logicalFolder name="Driver" displayName="Driver" projectFiles="true">
         <itemPath>src/Driver/posix_driver_io.c</itemPath>
@@ -96,11 +95,9 @@
       </item>
       <item path="inc/xml_parse.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="skeleton_example.xml" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="skeleton_schema.xsd" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/App/posix_app_io.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/App/win_app_io.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/Driver/posix_driver_io.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -151,11 +148,9 @@
       </item>
       <item path="inc/xml_parse.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="skeleton_example.xml" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="skeleton_schema.xsd" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="src/App/posix_app_io.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/App/win_app_io.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/Driver/posix_driver_io.c" ex="false" tool="0" flavor2="0">
       </item>

@@ -29,19 +29,21 @@ int initialize_memory(Memory * memory, size_t length, const char * location) {
         return INIT_FAIL;
     }
     
-    memory->file = open(location, O_RDWR | O_CREAT, 0666);
+    struct MemoryImpl * impl = &memory->impl;
     
-    if(memory->file == -1) {
+    impl->file = open(location, O_RDWR | O_CREAT, 0666);
+    
+    if(impl->file == -1) {
         perror("Error creating file");
         return INIT_FAIL;
     }
     
-    check_file_size(memory->file, length);
+    check_file_size(impl->file, length);
     
     memory->ptr = mmap(NULL, length, PROT_READ | PROT_WRITE, MAP_SHARED, memory->file, 0);
     
     if(memory->ptr == MAP_FAILED) {
-        close(memory->file);
+        close(impl->file);
         perror("Error mapping memory");
         return INIT_FAIL;
     }
@@ -65,8 +67,8 @@ int deinitialize(Memory * memory) {
         }
     }
     
-    if(memory->file != -1) {
-        if(close(memory->file) == -1) {
+    if(memory->impl.file != -1) {
+        if(close(memory->impl.file) == -1) {
             return INIT_FAIL;
         }
     }

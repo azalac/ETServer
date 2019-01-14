@@ -7,9 +7,10 @@
 #ifndef WIN_APP_IO_H
 #define WIN_APP_IO_H
 
-struct MemoryImpl {
-    
-};
+#include <windows.h>
+
+typedef struct _MemoryImpl {
+	HANDLE file, mapping;
+} MemoryImpl;
 
 #endif /* WIN_APP_IO_H */
-

@@ -7,13 +7,11 @@
 #ifndef POSIX_APP_IO_H
 #define POSIX_APP_IO_H
 
-struct MemoryImpl {
-    
-    const char * location;
+typedef struct _MemoryImpl {
     
     int file;
     
-};
+} MemoryImpl;
 
 #endif /* POSIX_APP_IO_H */
 

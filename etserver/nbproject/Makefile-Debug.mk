@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/App/posix_app_io.o \
+	${OBJECTDIR}/src/App/win_app_io.o \
 	${OBJECTDIR}/src/Driver/posix_driver_io.o \
 	${OBJECTDIR}/src/EntryPoint.o \
 	${OBJECTDIR}/src/data.o \
@@ -70,6 +71,11 @@ ${OBJECTDIR}/src/App/posix_app_io.o: src/App/posix_app_io.c
 	${MKDIR} -p ${OBJECTDIR}/src/App
 	${RM} "$@.d"
 	$(COMPILE.c) -g -DDEBUG -Iinc -Ilibxml2/include -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/App/posix_app_io.o src/App/posix_app_io.c
+
+${OBJECTDIR}/src/App/win_app_io.o: src/App/win_app_io.c
+	${MKDIR} -p ${OBJECTDIR}/src/App
+	${RM} "$@.d"
+	$(COMPILE.c) -g -DDEBUG -Iinc -Ilibxml2/include -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/App/win_app_io.o src/App/win_app_io.c
 
 ${OBJECTDIR}/src/Driver/posix_driver_io.o: src/Driver/posix_driver_io.c
 	${MKDIR} -p ${OBJECTDIR}/src/Driver

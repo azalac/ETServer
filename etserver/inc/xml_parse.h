@@ -32,6 +32,9 @@
 #define DEBUG_PRINT(a...)
 #endif
 
+#define XCHAR(c) ((xmlChar *)c)
+#define CXCHAR(c) ((const xmlChar *)c)
+
 typedef void* (*NodeAcceptor) (xmlNode * node, void * state);
 
 typedef struct _xmlnodeparser {

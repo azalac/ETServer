@@ -7,7 +7,14 @@
 #ifndef APP_IO_H
 #define APP_IO_H
 
-struct MemoryImpl;
+#include <stdlib.h>
+
+#define INIT_FAIL -1
+#define INIT_OK 0
+
+struct _MemoryImpl;
+
+typedef struct _MemoryImpl MemoryImpl;
 
 #ifdef __linux__
 #include "App/posix_app_io.h"
@@ -22,7 +29,9 @@ typedef struct _memory {
     void * ptr;
     size_t len;
     
-    struct MemoryImpl impl;
+    const char * location;
+    
+    MemoryImpl impl;
     
 } Memory;
 

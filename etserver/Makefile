@@ -1,4 +1,6 @@
 
+-include Makefile.cfg
+
 COMMON=$(realpath ../common)
 
 CC=gcc
@@ -9,21 +11,35 @@ INC=inc
 OBJ=obj
 BIN=bin
 
-EXTENSIONS := c s
-
 DIRS=$(sort $(SRC) $(INC) $(OBJ) $(BIN))
 
-SRCS=$(shell find $(SRC) -name "*.[$(EXTENSIONS)]")
+CFLAGS = -Wall -g $(addprefix -I ,$(INC)) $(INC_CFLAGS)
+LDFLAGS = $(CFLAGS) -std=c99 -Os $(INC_LDFLAGS)
+LIBS = $(INC_LIB)
+
+EXTENSIONS := c s $(INC_SRC_EXT)
 
 OBJ_EXT=o
 
-OBJS=$(patsubst $(SRC)/%,$(OBJ)/%,$(SRCS))
+#load each src type into a variable called SRCS_[ext name]
+$(eval $(foreach ext,$(EXTENSIONS),$(eval \
+SRCS_$(ext):=$(shell find $(SRC) -name "*.$(ext)")\
+)))
 
-$(eval $(foreach ext,$(EXTENSIONS),OBJS=$(patsubst %.$(ext),%.$(OBJ_EXT),$(OBJS))))
+#helper function to convert src/foo.[ext] to obj/foo.o 
+define do_obj_path
+    $(eval lst=$$($(2)))
+    $(eval $(1) := $(patsubst $(SRC)%,$(OBJ)%,$(patsubst %$(3),%$(OBJ_EXT),$(lst))))
+endef
 
-CFLAGS = -Wall -g $(addprefix -I ,$(INC))
-LDFLAGS = $(CFLAGS) -std=c99 -Os
-LIBS = 
+#convert each src path into an obj path
+$(eval $(foreach ext,$(EXTENSIONS),$(eval \
+$(call do_obj_path, OBJS_$(ext),SRCS_$(ext),$(ext)) \
+)))
+
+#put all srcs and objs into one variable
+$(eval $(foreach ext,$(EXTENSIONS),$(eval SRCS := $(SRCS) $$(SRCS_$(ext)))))
+$(eval $(foreach ext,$(EXTENSIONS),$(eval OBJS := $(OBJS) $$(OBJS_$(ext)))))
 
 #don't add common lib if project is common, or if common doesn't exist
 ifneq (,$(wildcard $(COMMON)))
@@ -38,7 +54,7 @@ endif
 all: $(DIRS) $(PROJ)
 
 clean:
-	find ./$(OBJ) -iname "*.obj" | xargs -r rm
+	find ./$(OBJ) -iname "*.$(OBJ_EXT)" | xargs -r rm
 	find ./ -iname "*~" | xargs -r rm
 	rm -f $(BIN)/$(PROJ)
 
@@ -48,8 +64,8 @@ $(DIRS):
 $(PROJ): $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) -o $(BIN)/$(PROJ) $(LIBS)
   
-$(OBJ)/%.o: $(SRC)/%.c
-	mkdir -p $(dir $@)
+$(OBJ)/%.$(OBJ_EXT): $(SRC)/%.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 #Params:
@@ -68,5 +84,3 @@ add%: %
 	sed -i "s|{PROJ\}|$(PROJ)|g" "$(fpath)"
 	sed -i "s|{FILE\}|`echo $(name) | xargs`|g" "$(fpath)"
 	sed -i "s|{GUARD\}|`echo $(name) | tr [a-z./] [A-Z__]`|g" "$(fpath)"
-
-

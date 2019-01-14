@@ -11,6 +11,8 @@
 #include <ctype.h>
 #include <string.h>
 
+#define STR_CMP(str1, str2) strcoll((const char*)str1, (const char*)str2)
+
 void * parse_bone(xmlNode * node, void * state);
 
 void * parse_rotation_axis(xmlNode * node, void * state);
@@ -131,7 +133,7 @@ void * parse_bone(xmlNode * node, void * state) {
 
         xmlChar * value = xmlNodeListGetString(cprop->doc, cprop->children, 1);
 
-        if (strcmp(cprop->name, "name") == 0) {
+        if (STR_CMP(cprop->name, "name") == 0) {
 
             int length = xmlStrlen(value) + 1;
             char * name = (char*) malloc(length);
@@ -140,7 +142,7 @@ void * parse_bone(xmlNode * node, void * state) {
             current->name = name;
         }
 
-        if (strcmp(cprop->name, "length") == 0 && parse_double(value, &current->length)) {
+        if (STR_CMP(cprop->name, "length") == 0 && parse_double(value, &current->length)) {
             DEBUG_PRINT("Error parsing bone length for bone %s", current->name);
         }
 
@@ -178,21 +180,21 @@ void * parse_rotation_axis(xmlNode * node, void * state) {
 
     while (cprop != NULL) {
 
-        xmlChar * value = xmlNodeListGetString(cprop->doc, cprop->children, 1);
+        const char * value = (const char*)xmlNodeListGetString(cprop->doc, cprop->children, 1);
 
-        if (strcmp(cprop->name, "min") == 0 && parse_double(value, &rotation->min)) {
+        if (STR_CMP(cprop->name, "min") == 0 && parse_double(value, &rotation->min)) {
             DEBUG_PRINT("Error parsing minimum value for %s", node->name);
         }
 
-        if (strcmp(cprop->name, "max") == 0 && parse_double(value, &rotation->max)) {
+        if (STR_CMP(cprop->name, "max") == 0 && parse_double(value, &rotation->max)) {
             DEBUG_PRINT("Error parsing maximum value for %s", node->name);
         }
 
-        if (strcmp(cprop->name, "allowed") == 0) {
+        if (STR_CMP(cprop->name, "allowed") == 0) {
             rotation->allowed = strcmp("1", value) || stricmp("yes", value) || stricmp("true", value);
         }
 
-        if (strcmp(cprop->name, "direction") == 0) {
+        if (STR_CMP(cprop->name, "direction") == 0) {
             rotation->around_outer = stricmp("outer", value);
 #ifdef DEBUG
             if (!stricmp(value, "inner")) {
